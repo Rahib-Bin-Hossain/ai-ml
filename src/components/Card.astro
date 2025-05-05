@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  icon?: string;
+  hoverEffect?: boolean;
+  borderColor?: string;
+}
+
+const { 
+  title, 
+  icon, 
+  hoverEffect = false,
+  borderColor = 'border-primary-200'
+} = Astro.props;
+---
+
+<div class={`bg-white rounded-lg shadow-sm p-6 border-l-4 ${borderColor} transition-all duration-300 animate-fade-in ${hoverEffect ? 'hover:shadow-md hover:translate-y-[-2px]' : ''}`}>
+  <div class="flex items-start gap-4">
+    {icon && (
+      <div class="text-primary-600 flex-shrink-0 mt-1">
+        <span class="text-xl">{icon}</span>
+      </div>
+    )}
+    <div>
+      <h3 class="text-xl font-semibold text-neutral-800 mb-3">{title}</h3>
+      <div class="text-neutral-600">
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

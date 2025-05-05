@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
+
+const title = "Home";
+const description = "Fake News Detection research project using Natural Language Processing and Machine Learning techniques to combat misinformation.";
+---
+
+<Layout title={title} description={description}>
+  <Hero 
+    title="Fake News Detection Using NLP and ML"
+    subtitle="Combating misinformation using intelligent text classification"
+    description="An innovative approach to identifying and filtering false information using Natural Language Processing and Machine Learning techniques."
+    ctaText="Explore the Project"
+    image="https://images.pexels.com/photos/4057663/pexels-photo-4057663.jpeg?auto=compress&cs=tinysrgb&w=1600"
+  />
+  
+  <!-- Featured Sections -->
+  <section class="py-16 bg-neutral-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader 
+        title="Key Project Components"
+        subtitle="Explore the main aspects of our fake news detection research"
+        alignment="center"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <Card 
+          title="Project Overview" 
+          icon="📋" 
+          hoverEffect={true}
+          borderColor="border-primary-300"
+        >
+          <p class="mb-4">Background, motivation, and objectives behind our approach to combating misinformation using NLP and ML techniques.</p>
+          <Button href="/project-overview" variant="outline" size="sm">Learn More</Button>
+        </Card>
+        
+        <Card 
+          title="Methodology" 
+          icon="🔍" 
+          hoverEffect={true}
+          borderColor="border-secondary-300"
+        >
+          <p class="mb-4">Our approach using TF-IDF and Logistic Regression to extract features and classify news articles effectively.</p>
+          <Button href="/methodology" variant="outline" size="sm">Explore Method</Button>
+        </Card>
+        
+        <Card 
+          title="Results & Analysis" 
+          icon="📊" 
+          hoverEffect={true}
+          borderColor="border-primary-300"
+        >
+          <p class="mb-4">Performance metrics, model comparisons, and insights from our fake news detection system evaluation.</p>
+          <Button href="/results" variant="outline" size="sm">View Results</Button>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-primary-700 text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">Ready to Explore Our Research?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Dive into our methodology, system architecture, and findings to learn how we're tackling the challenge of fake news detection.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/project-overview" variant="secondary">Start with the Overview</Button>
+        <Button href="/results" variant="outline" className="border-white text-white hover:bg-primary-600">Jump to Results</Button>
+      </div>
+    </div>
+  </section>
+</Layout>

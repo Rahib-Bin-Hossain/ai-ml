@@ -1,0 +1,102 @@
+---
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Project Overview', path: '/project-overview' },
+  { name: 'Literature Review', path: '/literature-review' },
+  { name: 'System Architecture', path: '/system-architecture' },
+  { name: 'Methodology', path: '/methodology' },
+  { name: 'Results', path: '/results' },
+  { name: 'Future Work', path: '/future-work' },
+  { name: 'Ethics & Sustainability', path: '/ethics-sustainability' },
+  { name: 'About us', path: '/about' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="text-primary-700 font-bold text-xl">Fake News Detection</a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <div class="flex items-center sm:hidden">
+        <button id="mobile-menu-button" class="text-neutral-500 hover:text-neutral-700 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Desktop navigation -->
+      <div class="hidden sm:flex sm:space-x-4">
+        {navItems.map(item => (
+          <a 
+            href={item.path} 
+            class={`inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 transition-colors duration-200 ${
+              currentPath === item.path 
+                ? 'border-primary-600 text-primary-700' 
+                : 'border-transparent text-neutral-500 hover:border-neutral-300 hover:text-neutral-700'
+            }`}
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile navigation -->
+  <div id="mobile-menu" class="hidden sm:hidden bg-white border-t border-neutral-200">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      {navItems.map(item => (
+        <a 
+          href={item.path}
+          class={`block px-3 py-2 rounded-md text-base font-medium ${
+            currentPath === item.path 
+              ? 'bg-primary-50 text-primary-700' 
+              : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800'
+          }`}
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+  
+  // Hide mobile menu when clicking outside
+  document.addEventListener('click', (event) => {
+    if (mobileMenu && !mobileMenu.contains(event.target as Node) && 
+        mobileMenuButton && !mobileMenuButton.contains(event.target as Node) && 
+        !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+  
+  // Navbar scroll behavior
+  const navbar = document.querySelector('nav');
+  let lastScrollY = window.scrollY;
+  
+  window.addEventListener('scroll', () => {
+    if (lastScrollY < window.scrollY) {
+      navbar?.classList.add('shadow');
+    } else if (window.scrollY === 0) {
+      navbar?.classList.remove('shadow');
+    }
+    lastScrollY = window.scrollY;
+  });
+</script>

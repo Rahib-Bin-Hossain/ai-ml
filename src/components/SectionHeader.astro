@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  alignment?: 'left' | 'center' | 'right';
+}
+
+const { 
+  title, 
+  subtitle,
+  alignment = 'left'
+} = Astro.props;
+
+const alignmentClasses = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right'
+};
+---
+
+<div class={`mb-10 ${alignmentClasses[alignment]}`}>
+  <h2 class="text-3xl font-bold text-primary-700 mb-3 animate-fade-in">{title}</h2>
+  {subtitle && (
+    <p class="text-lg text-neutral-600 max-w-3xl mx-auto animate-slide-up">{subtitle}</p>
+  )}
+  <div class="w-20 h-1 bg-secondary-400 mt-4 rounded-full animate-fade-in" class:list={[
+    { 'mx-auto': alignment === 'center' },
+    { 'ml-auto': alignment === 'right' }
+  ]}></div>
+</div>

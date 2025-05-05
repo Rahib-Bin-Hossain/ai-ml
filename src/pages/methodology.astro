@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Card from '../components/Card.astro';
+
+// Page meta
+const title = "Methodology";
+const description = "Technical approach for fake news detection using TF-IDF and Machine Learning.";
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-neutral-50 py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader 
+        title="Methodology"
+        subtitle="Technical framework and implementation details"
+      />
+
+      <!-- Theoretical Foundations -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold text-primary-700 mb-6">Theoretical Foundations</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- TF-IDF Card -->
+          <Card title="TF-IDF (Term Frequency-Inverse Document Frequency)" borderColor="border-primary-300">
+            <p class="mb-4 text-neutral-700">
+              Transforms text data into numerical features by evaluating word importance:
+            </p>
+            <div class="space-y-4">
+              <div class="bg-primary-50 p-4 rounded-lg">
+                <h4 class="font-medium text-primary-700 mb-2">Term Frequency (TF)</h4>
+                <code class="block font-mono text-sm bg-white p-2 rounded">
+                  TF(w) = (Number of times word w appears in document) / (Total words in document)
+                </code>
+              </div>
+              
+              <div class="bg-primary-50 p-4 rounded-lg">
+                <h4 class="font-medium text-primary-700 mb-2">Inverse Document Frequency (IDF)</h4>
+                <code class="block font-mono text-sm bg-white p-2 rounded">
+                  IDF(w) = log(N / (1 + df(w)))
+                </code>
+              </div>
+              
+              <div class="bg-secondary-50 p-4 rounded-lg">
+                <h4 class="font-medium text-secondary-700 mb-2">TF-IDF Calculation</h4>
+                <code class="block font-mono text-sm bg-white p-2 rounded">
+                  TF-IDF(w) = TF(w) × IDF(w)
+                </code>
+                <p class="mt-2 text-sm text-neutral-600">
+                  Where:<br>
+                  • N = Total number of documents<br>
+                  • df(w) = Documents containing word w
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          <!-- Logistic Regression Card -->
+          <Card title="Logistic Regression Model" borderColor="border-secondary-300">
+            <p class="mb-4 text-neutral-700">
+              Binary classification using sigmoid function:
+            </p>
+            <div class="bg-primary-50 p-4 rounded-lg">
+              <code class="block font-mono text-sm bg-white p-2 rounded mb-2">
+                P(Y=1|X) = 1 / (1 + e<sup>-(wX + b)</sup>)
+              </code>
+              <p class="text-sm text-neutral-600">
+                Where:<br>
+                • w = Weight vector<br>
+                • X = Feature vector<br>
+                • b = Bias term
+              </p>
+            </div>
+            <div class="mt-4 bg-secondary-50 p-4 rounded-lg">
+              <h4 class="font-medium text-secondary-700 mb-2">Training Objective</h4>
+              <p class="text-sm text-neutral-700">
+                Optimized using cross-entropy loss function:
+              </p>
+              <code class="block font-mono text-sm bg-white p-2 rounded mt-2">
+                L = -Σ [y<sub>i</sub>log(p<sub>i</sub>) + (1-y<sub>i</sub>)log(1-p<sub>i</sub>)]
+              </code>
+            </div>
+          </Card>
+        </div>
+      </div>
+
+      <!-- Experimental Setup -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold text-primary-700 mb-6">Experimental Setup</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Workflow Steps -->
+          <Card title="Implementation Steps" borderColor="border-primary-300">
+            <ol class="list-decimal list-inside space-y-4">
+              <li class="text-neutral-700">
+                <span class="font-medium">Data Collection:</span><br>
+                Labeled datasets from verified sources
+              </li>
+              <li class="text-neutral-700">
+                <span class="font-medium">Data Preprocessing:</span><br>
+                • Lowercase conversion<br>
+                • Remove special characters/numbers<br>
+                • Stopword removal<br>
+                • Stemming
+              </li>
+              <li class="text-neutral-700">
+                <span class="font-medium">Feature Extraction:</span><br>
+                TF-IDF vectorization
+              </li>
+              <li class="text-neutral-700">
+                <span class="font-medium">Model Training:</span><br>
+                • Logistic Regression<br>
+                • Random Forest<br>
+                • Support Vector Machine (SVM)<br>
+                • Naïve Bayes<br>
+                (Trained on 80% data)
+              </li>
+              <li class="text-neutral-700">
+                <span class="font-medium">Model Evaluation:</span><br>
+                Accuracy, Precision, Recall, Confusion Matrix
+              </li>
+              <li class="text-neutral-700">
+                <span class="font-medium">Prediction:</span><br>
+                Classify new articles
+              </li>
+            </ol>
+          </Card>
+
+          <!-- Algorithm Pseudocode -->
+          <Card title="Implementation Algorithm" borderColor="border-secondary-300">
+            <pre class="bg-neutral-800 text-neutral-100 p-4 rounded text-sm overflow-x-auto">
+1. Load dataset
+2. Preprocess text:
+   - Clean and tokenize
+   - Apply stemming
+3. Convert to TF-IDF vectors
+4. Split data (80% train, 20% test)
+5. Train and compare models:
+   - Logistic Regression
+   - Random Forest
+   - Support Vector Machine
+   - Naïve Bayes
+6. Evaluate performance metrics
+7. Classify new articles</pre>
+          </Card>
+        </div>
+      </div>
+
+      <!-- Assumptions & Constraints -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold text-primary-700 mb-6">Assumptions & Constraints</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card title="Key Assumptions" borderColor="border-primary-300">
+            <ul class="list-disc list-inside space-y-2 text-neutral-700">
+              <li>Dataset represents real-world news distribution</li>
+              <li>Model generalizes to unseen articles</li>
+              <li>Text features sufficient for classification</li>
+            </ul>
+          </Card>
+
+          <Card title="Potential Limitations" borderColor="border-secondary-300">
+            <ul class="list-disc list-inside space-y-2 text-neutral-700">
+              <li>Accuracy depends on dataset quality</li>
+              <li>Potential labeling bias in training data</li>
+              <li>Limited to text-based analysis</li>
+            </ul>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

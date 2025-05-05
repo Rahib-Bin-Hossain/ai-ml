@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Card from '../components/Card.astro';
+
+// Page meta
+const title = "Results & Analysis";
+const description = "Experimental results and performance analysis for fake news detection system";
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-neutral-50 py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader 
+        title="Experimental Results"
+        subtitle="Performance metrics and system limitations"
+      />
+
+      <!-- Performance Metrics -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold text-primary-700 mb-6">Performance Metrics</h3>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <Card title="Evaluation Formulas">
+            <div class="space-y-4 text-sm">
+              <div>
+                <p class="font-medium">Accuracy:</p>
+                <code class="block bg-gray-100 p-2 rounded mt-1">
+                  (TP + TN) / (TP + TN + FP + FN)
+                </code>
+              </div>
+              <div>
+                <p class="font-medium">Precision:</p>
+                <code class="block bg-gray-100 p-2 rounded mt-1">
+                  TP / (TP + FP)
+                </code>
+              </div>
+              <div>
+                <p class="font-medium">Recall:</p>
+                <code class="block bg-gray-100 p-2 rounded mt-1">
+                  TP / (TP + FN)
+                </code>
+              </div>
+              <div>
+                <p class="font-medium">F1-Score:</p>
+                <code class="block bg-gray-100 p-2 rounded mt-1">
+                  2 × (Precision × Recall) / (Precision + Recall)
+                </code>
+              </div>
+            </div>
+          </Card>
+
+          <!-- Model Accuracies -->
+          <Card title="Model Performance Comparison">
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead>
+                  <tr class="bg-gray-50">
+                    <th class="text-left py-2 px-4">Model</th>
+                    <th class="text-right py-2 px-4">Accuracy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-2 px-4">Random Forest</td>
+                    <td class="text-right py-2 px-4 font-medium">99.69%</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="py-2 px-4">SVM</td>
+                    <td class="text-right py-2 px-4">99.24%</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4">Logistic Regression</td>
+                    <td class="text-right py-2 px-4">98.46%</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="py-2 px-4">Naïve Bayes</td>
+                    <td class="text-right py-2 px-4">93.09%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </Card>
+        </div>
+      </div>
+
+      <!-- Confusion Matrix -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold text-primary-700 mb-6">Logistic Regression Results</h3>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <Card title="Confusion Matrix">
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th class="text-center py-2 px-4">Predicted Fake</th>
+                    <th class="text-center py-2 px-4">Predicted Real</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium py-2 px-4">Actual Fake</td>
+                    <td class="text-center py-2 px-4 bg-green-100">4582</td>
+                    <td class="text-center py-2 px-4 bg-red-100">66</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium py-2 px-4">Actual Real</td>
+                    <td class="text-center py-2 px-4 bg-red-100">72</td>
+                    <td class="text-center py-2 px-4 bg-green-100">4218</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-4 text-sm">
+              <p><strong>False Positives:</strong> 66 (Real classified as Fake)</p>
+              <p><strong>False Negatives:</strong> 72 (Fake classified as Real)</p>
+            </div>
+          </Card>
+
+          <!-- Classification Report -->
+          <Card title="Classification Report">
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead>
+                  <tr class="bg-gray-50">
+                    <th class="py-2 px-4"></th>
+                    <th class="text-right py-2 px-4">Precision</th>
+                    <th class="text-right py-2 px-4">Recall</th>
+                    <th class="text-right py-2 px-4">F1-Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-2 px-4">Fake News</td>
+                    <td class="text-right py-2 px-4">0.98</td>
+                    <td class="text-right py-2 px-4">0.99</td>
+                    <td class="text-right py-2 px-4">0.99</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="py-2 px-4">Real News</td>
+                    <td class="text-right py-2 px-4">0.98</td>
+                    <td class="text-right py-2 px-4">0.98</td>
+                    <td class="text-right py-2 px-4">0.98</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </Card>
+        </div>
+      </div>
+
+      <!-- Word Frequency Analysis -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold text-primary-700 mb-6">Top Predictive Words</h3>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <Card title="Fake News Top Words">
+            <div class="columns-2 text-sm">
+              <ul class="list-disc list-inside">
+                <li>said (175,000)</li>
+                <li>trump (150,000)</li>
+                <li>nr (125,000)</li>
+                <li>state (100,000)</li>
+                <li>would (75,000)</li>
+                <li>presid (50,000)</li>
+                <li>us (42,180)</li>
+                <li>year (30,000)</li>
+                <li>one (25,000)</li>
+                <li>new (20,000)</li>
+              </ul>
+            </div>
+          </Card>
+
+          <Card title="Real News Top Words">
+            <div class="columns-2 text-sm">
+              <ul class="list-disc list-inside">
+                <li>trump (80,000)</li>
+                <li>peopl (70,000)</li>
+                <li>us (60,000)</li>
+                <li>said (50,000)</li>
+                <li>one (40,000)</li>
+                <li>citizen (30,000)</li>
+                <li>state (25,000)</li>
+                <li>would (20,000)</li>
+                <li>presid (15,000)</li>
+                <li>like (10,000)</li>
+              </ul>
+            </div>
+          </Card>
+        </div>
+      </div>
+
+      <!-- Error Analysis -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold text-primary-700 mb-6">Error Analysis & Limitations</h3>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <Card title="Key Challenges" borderColor="border-red-300">
+            <div class="space-y-4 text-sm">
+              <div>
+                <h4 class="font-medium mb-1">Misclassification Errors</h4>
+                <ul class="list-[circle] list-inside">
+                  <li>False Positives: 66 real news articles misclassified</li>
+                  <li>False Negatives: 72 fake news articles missed</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 class="font-medium mb-1">Feature Limitations</h4>
+                <ul class="list-[circle] list-inside">
+                  <li>Text-only analysis (no source credibility checks)</li>
+                  <li>No user engagement metrics</li>
+                  <li>No external fact-checking integration</li>
+                </ul>
+              </div>
+            </div>
+          </Card>
+
+          <Card title="System Limitations" borderColor="border-yellow-300">
+            <div class="space-y-4 text-sm">
+              <div>
+                <h4 class="font-medium mb-1">Dataset Bias</h4>
+                <ul class="list-[circle] list-inside">
+                  <li>Limited to Kaggle-sourced data</li>
+                  <li>English-language only</li>
+                  <li>Regional/news-type biases</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 class="font-medium mb-1">Model Concerns</h4>
+                <ul class="list-[circle] list-inside">
+                  <li>Potential overfitting in high-accuracy models</li>
+                  <li>Performance gap on new/unseen patterns</li>
+                  <li>Assumption of feature independence</li>
+                </ul>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="mt-8 bg-primary-50 p-6 rounded-lg">
+          <h4 class="text-lg font-semibold text-primary-700 mb-3">Key Takeaways</h4>
+          <ul class="list-disc list-inside text-neutral-700 space-y-2">
+            <li>Random Forest achieved highest accuracy (99.69%) but requires validation on new data</li>
+            <li>System demonstrates strong baseline performance but has clear improvement areas</li>
+            <li>Error analysis reveals need for multi-modal features and bias mitigation</li>
+            <li>Current implementation best suited for initial screening rather than final verification</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

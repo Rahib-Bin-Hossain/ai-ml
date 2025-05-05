@@ -1,0 +1,50 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  ctaText?: string;
+  ctaLink?: string;
+  image?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  description, 
+  ctaText = 'Learn More', 
+  ctaLink = '/project-overview',
+  image = 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+} = Astro.props;
+---
+
+<section 
+  class="relative bg-neutral-900 text-white overflow-hidden" 
+  style={`background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('${image}'); background-size: cover; background-position: center;`}
+>
+  <div class="absolute inset-0 bg-gradient-to-r from-primary-900/80 to-transparent"></div>
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="py-20 md:py-32 max-w-2xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+        {title}
+      </h1>
+      
+      <p class="text-xl md:text-2xl font-medium mb-4 text-secondary-300 animate-fade-in" style="animation-delay: 0.1s;">
+        {subtitle}
+      </p>
+      
+      <p class="text-lg text-neutral-200 mb-8 animate-fade-in" style="animation-delay: 0.2s;">
+        {description}
+      </p>
+      
+      <div class="animate-fade-in" style="animation-delay: 0.3s;">
+        <Button href={ctaLink} variant="secondary" size="lg">
+          {ctaText}
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

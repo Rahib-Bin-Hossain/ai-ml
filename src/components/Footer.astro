@@ -1,0 +1,41 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-neutral-100 py-8">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold text-primary-700 mb-4">Fake News Detection</h3>
+        <p class="text-neutral-600 text-sm">
+          A research project focused on combating misinformation using Natural Language Processing and Machine Learning techniques.
+        </p>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-semibold text-primary-700 mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-neutral-600 hover:text-primary-600 text-sm transition-colors">Home</a></li>
+          <li><a href="/project-overview" class="text-neutral-600 hover:text-primary-600 text-sm transition-colors">Project Overview</a></li>
+          <li><a href="/methodology" class="text-neutral-600 hover:text-primary-600 text-sm transition-colors">Methodology</a></li>
+          <li><a href="/results" class="text-neutral-600 hover:text-primary-600 text-sm transition-colors">Results</a></li>
+          <li><a href="/about" class="text-neutral-600 hover:text-primary-600 text-sm transition-colors">About</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-semibold text-primary-700 mb-4">Contact</h3>
+        <p class="text-neutral-600 text-sm">
+          Islamic University of Technology (IUT)<br>
+          Board Bazar, Gazipur-1704<br>
+          Bangladesh
+        </p>
+      </div>
+    </div>
+    
+    <div class="border-t border-neutral-200 mt-8 pt-6 text-center text-neutral-500 text-sm">
+      <p>© {currentYear} Fake News Detection Project. All rights reserved.</p>
+      <p class="mt-1">Developed as part of the Artificial Intelligence and Machine Learning course.</p>
+    </div>
+  </div>
+</footer>

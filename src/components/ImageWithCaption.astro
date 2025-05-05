@@ -1,0 +1,34 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  width?: string;
+  height?: string;
+  className?: string;
+}
+
+const { 
+  src, 
+  alt, 
+  caption, 
+  width = 'auto', 
+  height = 'auto',
+  className = '' 
+} = Astro.props;
+---
+
+<figure class={`rounded-lg overflow-hidden shadow-sm ${className}`}>
+  <img 
+    src={src} 
+    alt={alt} 
+    width={width} 
+    height={height} 
+    class="w-full h-auto object-cover"
+  />
+  {caption && (
+    <figcaption class="p-3 text-sm text-neutral-600 bg-neutral-50 italic text-center">
+      {caption}
+    </figcaption>
+  )}
+</figure>

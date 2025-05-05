@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Card from '../components/Card.astro';
+
+// Page meta
+const title = "System Architecture";
+const description = "Our structured workflow for detecting fake news using NLP and Machine Learning techniques.";
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-neutral-50 py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader 
+        title="Workflow Overview"
+        subtitle="Our step-by-step process for fake news detection"
+        alignment="center"
+      />
+
+      <!-- Workflow Steps -->
+      <div class="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+        <Card title="1. Data Collection" icon="📥" borderColor="border-primary-300">
+          <p class="mb-2">
+            A labeled dataset containing both real and fake news articles is obtained from Kaggle.
+          </p>
+          <ul class="list-disc list-inside text-sm text-neutral-600 ml-2">
+            <li>Curated collection of verified news articles</li>
+            <li>Pre-labeled authentic and fake content</li>
+          </ul>
+        </Card>
+
+        <Card title="2. Data Preprocessing" icon="🧹" borderColor="border-secondary-300">
+          <p class="mb-2">
+            Text cleaning pipeline preparing data for analysis:
+          </p>
+          <ul class="list-disc list-inside text-sm text-neutral-600 ml-2">
+            <li>Remove punctuation and numbers</li>
+            <li>Eliminate stopwords</li>
+            <li>Apply stemming to root words</li>
+          </ul>
+        </Card>
+
+        <Card title="3. Feature Extraction" icon="🔡" borderColor="border-primary-300">
+          <p class="mb-2">
+            TF-IDF transformation for numerical representation:
+          </p>
+          <ul class="list-disc list-inside text-sm text-neutral-600 ml-2">
+            <li>Convert text to machine-readable vectors</li>
+            <li>Calculate term frequency-inverse document frequency</li>
+          </ul>
+        </Card>
+
+        <Card title="4. Model Training" icon="🤖" borderColor="border-secondary-300">
+          <p class="mb-2">
+            Machine learning model development:
+          </p>
+          <ul class="list-disc list-inside text-sm text-neutral-600 ml-2">
+            <li>Primary model: Logistic Regression</li>
+            <li>Comparative models: SVM, Random Forest, Naïve Bayes</li>
+            <li>80-20 train-test split</li>
+          </ul>
+        </Card>
+
+        <Card title="5. Model Evaluation" icon="📊" borderColor="border-primary-300">
+          <p class="mb-2">
+            Comprehensive performance assessment:
+          </p>
+          <ul class="list-disc list-inside text-sm text-neutral-600 ml-2">
+            <li>Accuracy and precision metrics</li>
+            <li>Recall and F1-score analysis</li>
+          </ul>
+        </Card>
+
+        <Card title="6. Prediction & Visualization" icon="🔮" borderColor="border-secondary-300">
+          <p class="mb-2">
+            Final implementation and insights:
+          </p>
+          <ul class="list-disc list-inside text-sm text-neutral-600 ml-2">
+            <li>Word frequency analysis</li>
+            <li>Confusion matrix visualization</li>
+          </ul>
+        </Card>
+      </div>
+    </div>
+  </section>
+</Layout>
